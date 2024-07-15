@@ -21,8 +21,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'junit:junit:4.13'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+springBoot {
+    mainClass = 'src/main/java/com/example/calculator/CalculatorApplication.java'
 }
