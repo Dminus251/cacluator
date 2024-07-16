@@ -9,7 +9,7 @@ class CalculatorApplicationTest {
 
 	@Test
 	void testSum() {
-		assertEquals(10, CalculatorService.sum(2,3));
+		assertEquals(5, CalculatorService.sum(2,3));
 	}
 
 }
