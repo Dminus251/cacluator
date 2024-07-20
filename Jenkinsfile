@@ -22,5 +22,10 @@ pipeline{
 		sh "./gradlew checkstyleMain"
 	  }
 	}
+	stage("Docker build"){
+	    steps{
+		sh "docker build -t dminus251/calculator ."
+	    }
+	}
     }	
 }
