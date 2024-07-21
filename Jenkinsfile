@@ -1,8 +1,8 @@
 pipeline {
     agent {
  	docker {
-	    image 'docker:20.10-dind'
-	    args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+            image 'gradle:7.5-jdk11'
+            args '--privileged' // 필요 시 추가적인 권한을 부여
         }
     }
     stages {
