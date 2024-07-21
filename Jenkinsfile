@@ -1,9 +1,8 @@
 pipeline {
     agent {
-        docker {
+ 	docker {
             image 'gradle:latest'
-            label 'docker-agent'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'  // Docker 소켓 공유
         }
     }
     stages {
