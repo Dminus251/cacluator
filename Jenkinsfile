@@ -2,7 +2,7 @@ pipeline {
     agent {
  	docker {
             image 'gradle:jdk17'
-            args '--privileged' // 필요 시 추가적인 권한을 부여
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock' // 필요 시 추가적인 권한을 부여
         }
     }
     stages {
