@@ -1,8 +1,8 @@
 pipeline {
     agent {
  	docker {
-   	    image 'docker:20.10-dind'  // DinD 이미지를 사용
-            args '--privileged'        // Docker-in-Docker를 사용할 때 필요한 권한
+   	    image 'leszko/jenkins-docker-slave'
+	    args '--privileged'
         }
     }
     stages {
