@@ -32,6 +32,8 @@ pipeline {
                 script {
                     // Ensure Docker is available
                     sh 'docker --version'
+		    
+ 		    sh 'cp build/libs/calculator-0.0.1-SNAPSHOT.jar .'
 
                     // Build Docker image
                     sh 'docker build -t dminus251/calculator:2 .'
