@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+	docker {
+	  image 'docker:20.10-dind'
+	  args '--privileged'
+	}
+    }
     stages{
         stage("Complie"){
             steps{
