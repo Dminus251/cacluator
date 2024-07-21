@@ -1,5 +1,5 @@
 # Dockerfile for Jenkins build agent with Docker client
-FROM openjdk:17-slim
+FROM gradle:jdk17
 
 # Docker 클라이언트 설치
 RUN apt-get update && \
