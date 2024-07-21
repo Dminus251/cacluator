@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+	docker {
+            image 'docker:latest'
+            args '--privileged' // Docker-in-Docker를 위해 필요한 권한 부여
+        }
+    }
     stages{
         stage("Complie"){
             steps{
