@@ -1,4 +1,7 @@
 gitToken
+domain.key
+domain.crt
+
 HELP.md
 .gradle
 build/

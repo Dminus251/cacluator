@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+        dockerContainer {
+       	    image 'docker:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+       	}
+    }
     stages{
         stage("Complie"){
             steps{
@@ -24,7 +29,7 @@ pipeline{
 	}
 	stage("Docker build"){
 	    steps{
-		sh "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin"
+		sh "apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin"
 		sh "docker build -t dminus251/calculator ."
 	    }
 	}
