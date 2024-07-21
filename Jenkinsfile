@@ -1,8 +1,8 @@
 pipeline {
     agent {
  	docker {
-            image 'gradle:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'  // Docker 소켓 공유
+   	    image 'docker:20.10-dind'  // DinD 이미지를 사용
+            args '--privileged'        // Docker-in-Docker를 사용할 때 필요한 권한
         }
     }
     stages {
