@@ -1,10 +1,5 @@
 pipeline{
-    agent {
-	dockerContainer {
-	  image 'docker:20.10-dind'
-	  args '--privileged'
-	}
-    }
+    agent any
     stages{
         stage("Complie"){
             steps{
@@ -29,6 +24,7 @@ pipeline{
 	}
 	stage("Docker build"){
 	    steps{
+		sh "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin"
 		sh "docker build -t dminus251/calculator ."
 	    }
 	}
