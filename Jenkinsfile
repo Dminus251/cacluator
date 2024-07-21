@@ -1,8 +1,8 @@
 pipeline {
     agent {
- 	docker {
-            image 'gradle:jdk17'
-            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock' // 필요 시 추가적인 권한을 부여
+        docker {
+            image 'my-gradle-docker:latest'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
@@ -32,9 +32,9 @@ pipeline {
                 script {
                     // Ensure Docker is available
                     sh 'docker --version'
-                    
+
                     // Build Docker image
-                    sh 'docker build -t dminus251/calculator .'
+                    sh 'docker build -t dminus251/calculator:2 .'
                 }
             }
         }
