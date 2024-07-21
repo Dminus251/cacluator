@@ -1,8 +1,8 @@
 pipeline {
     agent {
  	docker {
-   	    image 'leszko/jenkins-docker-slave'
-	    args '--privileged'
+	    image 'docker:20.10-dind'
+	    args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     stages {
