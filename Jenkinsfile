@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'my-gradle-docker:latest'
+            image 'dminus251/calculator:2'
             args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
