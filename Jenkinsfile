@@ -1,6 +1,6 @@
 pipeline{
     agent {
-	docker {
+	dockerContainer {
 	  image 'docker:20.10-dind'
 	  args '--privileged'
 	}
