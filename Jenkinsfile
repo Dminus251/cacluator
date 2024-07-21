@@ -27,13 +27,24 @@ pipeline {
                 sh './gradlew checkstyleMain'
             }
         }
+        stage('Build Jar') {
+            steps {
+                sh './gradlew build'
+            }
+        }
+        stage('Verify Build Output') {
+            steps {
+                sh 'ls -la build/libs/'
+            }
+        }
         stage('Docker Build') {
             steps {
                 script {
                     // Ensure Docker is available
                     sh 'docker --version'
-		    
- 		    sh 'cp build/libs/calculator-0.0.1-SNAPSHOT.jar .'
+
+                    // Move the JAR file to the root of the build context
+                    sh 'cp build/libs/calculator-0.0.1-SNAPSHOT.jar .'
 
                     // Build Docker image
                     sh 'docker build -t dminus251/calculator:2 .'
