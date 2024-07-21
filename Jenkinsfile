@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'dminus251/calculator:2'
+            image 'dminus251/jenkins-docker-agent:latest'
             args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
