@@ -1,7 +1,7 @@
 pipeline {
     agent {
  	docker {
-            image 'gradle:7.5-jdk11'
+            image 'gradle:jdk17'
             args '--privileged' // 필요 시 추가적인 권한을 부여
         }
     }
