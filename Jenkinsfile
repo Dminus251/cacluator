@@ -1,5 +1,6 @@
 pipeline {
     agent {
+	    image 'dminus251/jenkins-docker-agent:latest'
             label 'docker-cloud-agent'
             args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
     }
