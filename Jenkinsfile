@@ -1,8 +1,9 @@
 pipeline {
     agent {
         docker {
-		image 'docker:20.10-dind'
+            	image 'dminus251/jenkins-docker-agent:latest'
 		args '--privileged'
+		label 'docker-cloud-agent'
         }
     }
     stages {
