@@ -1,9 +1,8 @@
 pipeline {
     agent {
         docker {
-            	image 'dminus251/jenkins-docker-agent:latest'
-		args '--privileged'
-		label 'docker-cloud-agent'
+                image 'dminus251/jenkins-docker-agent:latest'
+                label 'docker-cloud-agent'
         }
     }
     stages {
@@ -33,19 +32,11 @@ pipeline {
                 sh './gradlew build'
             }
         }
-        stage('Verify Build Output') {
-            steps {
-                sh 'ls -la build/libs/'
-            }
-        }
         stage('Docker Build') {
             steps {
                 script {
-                    // Ensure Docker is available
+                	//도커가 설치됐는지 확인
                     sh 'docker --version'
-
-                    // Move the JAR file to the root of the build context
-                    sh 'cp build/libs/calculator-0.0.1-SNAPSHOT.jar .'
 
                     // Build Docker image
                     sh 'docker build -t dminus251/calculator:2 .'
