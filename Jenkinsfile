@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'dminus251/jenkins-docker-agent:latest'
+		image 'docker:20.10.-dind'
         }
     }
     stages {
@@ -52,4 +52,3 @@ pipeline {
         }
     }
 }
-
