@@ -1,12 +1,20 @@
 pipeline {
     agent {
         docker {
-                image 'dminus251/jenkins-docker-agent:latest'
-		args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
-                label 'docker-cloud-agent'
+            image 'dminus251/jenkins-docker-agent:latest'
+            args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+            label 'docker-cloud-agent'
         }
     }
     stages {
+        stage('Check Docker Installation') {
+            steps {
+                script {
+                    sh 'which docker'
+                    sh 'docker --version'
+                }
+            }
+        }
         stage('Compile') {
             steps {
                 sh './gradlew compileJava'
@@ -36,7 +44,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                	//도커가 설치됐는지 확인
+                    // Docker가 설치됐는지 확인
                     sh 'docker --version'
 
                     // Build Docker image
@@ -46,3 +54,4 @@ pipeline {
         }
     }
 }
+
