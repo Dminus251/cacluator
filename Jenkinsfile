@@ -3,7 +3,7 @@ pipeline {
 	docker {
                 image 'dminus251/jenkins-docker-agent:latest'
                 args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
-                label 'docker-cloud-agent'
+                label 'docker-node-agent'
         }
     }
     stages {
