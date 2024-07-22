@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
                 image 'dminus251/jenkins-docker-agent:latest'
-                label 'docker-cloud-agent'
+                label 'docker-node-agent'
         }
     }
     stages {
