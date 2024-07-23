@@ -1,7 +1,7 @@
 pipeline {
     agent {
 	docker {
-		image 'dminus251/jenkins-docker-agent:latest'
+		image 'dminus251/jenkins-docker-agent:using_socket'
                 label 'docker-node-agent'
         }
     }
