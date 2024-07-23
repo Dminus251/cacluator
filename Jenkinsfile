@@ -2,7 +2,6 @@ pipeline {
     agent {
 	docker {
 		image 'dminus251/gardle-agent:latest'
-                args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
                 label 'docker-node-agent'
         }
     }
