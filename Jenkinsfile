@@ -1,8 +1,7 @@
 pipeline {
     agent {
 	docker {
-		image 'dminus251/gardle-agent:latest'
-		args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
+		image 'dminus251/jenkins-docker-agent:latest'
                 label 'docker-node-agent'
         }
     }
