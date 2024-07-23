@@ -2,6 +2,7 @@ pipeline {
     agent {
 	docker {
 		image 'dminus251/jenkins-docker-agent:using_socket'
+		args '--privileged -v /var/run/docker.sock:/var/run/docker.sock'
                 label 'docker-node-agent'
         }
     }
