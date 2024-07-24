@@ -50,7 +50,7 @@ pipeline {
         }
 	stage("Docker push"){
 	  steps{
-	    sh "docker push dminus251/calculator:latest ."
+	    sh "docker push dminus251/calculator:latest"
 	  }
 	}
 	stage("Deploy to staging"){
