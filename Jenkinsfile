@@ -44,11 +44,15 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    // Build Docker image
                     sh 'docker build -t dminus251/calculator:latest .'
                 }
             }
         }
+	stage("Docker push"){
+	  steps{
+	    sh "docker push dminus251/calculator:latest ."
+	  }
+	}
 	stage("Deploy to staging"){
 	  steps{
 	    sh "docker run -d --rm -p 8765:8081 --name calcForStaging dminus251/calculator:latest"
@@ -56,7 +60,6 @@ pipeline {
 	}
 	stage("Acceptance test"){
 	  steps{
-	    sh "cat acceptance_test.sh"
 	    sleep 30 //docker run이 확실히 실행될 때까지 기다림
 	    sh "docker logs calcForStaging"
 	    sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"

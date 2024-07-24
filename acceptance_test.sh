@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #curl 결과를 result 변수에 저장
-result=$(docker exec calcForStaging curl -s "http://localhost:8081/sum?a=100&b=172")
+result=$(docker exec calcForStaging curl -s "http://localhost:8081/sum?a=1&b=2")
 
 # 기대값을 설정: 100+172=272
-expected=272
+expected=2
 
 # 결과값이 기대값과 동일한지 체크
 if [ "$result" -eq "$expected" ]; then
