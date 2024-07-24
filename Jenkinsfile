@@ -48,11 +48,11 @@ pipeline {
                 }
             }
         }
-	stage("Docker push"){
-	  steps{
-	    sh "docker push dminus251/calculator:latest"
-	  }
-	}
+	//stage("Docker push"){
+	  //steps{
+	    //sh "docker push dminus251/calculator:latest"
+	  //}
+	//}
 	stage("Deploy to staging"){
 	  steps{
 	    sh "docker run -d --rm -p 8765:8081 --name calcForStaging dminus251/calculator:latest"
