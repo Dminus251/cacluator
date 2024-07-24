@@ -44,9 +44,6 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    // Docker가 설치됐는지 확인
-                    sh 'docker --version'
-
                     // Build Docker image
                     sh 'docker build -t dminus251/calculator:latest .'
                 }
