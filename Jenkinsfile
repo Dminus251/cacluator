@@ -68,6 +68,7 @@ pipeline {
     post{
 	always{
 	  sh "docker stop calcForStaging"
+	  sh "docker network rm my-network"
 	}
     }
 }
