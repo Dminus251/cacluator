@@ -6,6 +6,9 @@ pipeline {
                 label 'docker-node-agent'
         }
     }
+    environment {
+        DOCKER_CREDENTIALS_ID = 'dminus251' // 저장한 자격 증명의 ID를 입력합니다.
+    }
     stages {
         stage('Check Docker Installation') {
             steps {
