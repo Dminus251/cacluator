@@ -48,10 +48,26 @@ pipeline {
                     sh 'docker --version'
 
                     // Build Docker image
-                    sh 'docker build -t dminus251/calculator:2 .'
+                    sh 'docker build -t dminus251/calculator:latest .'
                 }
             }
         }
+	stage("Deploy to staging"){
+	  steps{
+	    sh "docker run -d --rm -p 8765:8080 --name calculator dminus251/calculator:latest
+	  }
+	}
+	stage("Acceptance test"){
+	  steps{
+	    sleep 60 //docker run이 확실히 실행될 때까지 기다림
+	    sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
+	  }  
+	}
+    }
+    //까지 stages
+    post{
+	always{
+	  sh "docker stop calculator"
+	}
     }
 }
-
