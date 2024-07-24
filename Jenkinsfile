@@ -59,7 +59,7 @@ pipeline {
 	stage("Acceptance test"){
 	  steps{
 	    sh "cat acceptance_test.sh"
-	    sleep 60 //docker run이 확실히 실행될 때까지 기다림
+	    sleep 30 //docker run이 확실히 실행될 때까지 기다림
 	    sh "docker logs calcForStaging"
 	    sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
 	  }  
