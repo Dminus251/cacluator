@@ -51,7 +51,7 @@ pipeline {
         }
 	stage("Deploy to staging"){
 	  steps{
-	    sh "docker run -d --rm -p 8765:8080 dminus251/calculator:latest"
+	    sh "docker run -d --rm -p 8765:8079 --name calcForStaging dminus251/calculator:latest"
 	  }
 	}
 	stage("Acceptance test"){
@@ -64,7 +64,7 @@ pipeline {
     //까지 stages
     post{
 	always{
-	  sh "docker stop calculator"
+	  sh "docker stop calcForStaging"
 	}
     }
 }
