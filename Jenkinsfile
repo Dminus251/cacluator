@@ -51,7 +51,9 @@ pipeline {
         }
 	stage("Deploy to staging"){
 	  steps{
-	    sh "docker run -d --rm -p 8765:8081 --name calcForStaging dminus251/calculator:latest"
+	    sh "docker network create my-network"
+            sh "docker run -d --rm --network my-network --name calcForStaging dminus251/calculator:latest"
+	    //sh "docker run -d --rm -p 8765:8081 --name calcForStaging dminus251/calculator:latest"
 	  }
 	}
 	stage("Acceptance test"){
