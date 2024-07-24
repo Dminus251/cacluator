@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #curl 결과를 result 변수에 저장
-result=$(docker exec calcForStaging curl -s "http://localhost:8081/sum?a=1&b=2")
-#result=$(docker exec calcForStaging curl -s "http://localhost:8765/sum?a=1&b=2")
+#result=$(docker exec calcForStaging curl -s "http://localhost:8081/sum?a=1&b=2") - success
+result=$(docker exec calcForStaging curl -s "http://localhost:8765/sum?a=1&b=2")
 #result=$(curl -s "http://localhost:8081/sum?a=1&b=2") - failure
 #result=$(curl -s "http://localhost:8765/sum?a=1&b=2") - failure....?
 echo "$result"
