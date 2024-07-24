@@ -2,7 +2,7 @@
 
 #curl 결과를 result 변수에 저장
 result=$(docker exec calcForStaging curl -s "http://localhost:8765/sum?a=1&b=2")
-
+echo "$result"
 # 기대값을 설정: 100+172=272
 expected=3
 
