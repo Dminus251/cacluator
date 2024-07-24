@@ -48,11 +48,21 @@ pipeline {
                 }
             }
         }
-	//stage("Docker push"){
-	  //steps{
-	    //sh "docker push dminus251/calculator:latest"
-	  //}
-	//}
+	stage('Docker Login') {
+            steps {
+                script {
+                    // Docker Hub에 로그인
+                    withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    }
+                }
+            }
+        }
+	stage("Docker push"){
+	  steps{
+	    sh "docker push dminus251/calculator:latest"
+	  }
+	}
 	stage("Deploy to staging"){
 	  steps{
 	    sh "docker run -d --rm -p 8765:8081 --name calcForStaging dminus251/calculator:latest"
