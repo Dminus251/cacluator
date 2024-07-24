@@ -53,7 +53,6 @@ pipeline {
 	  steps{
 	    sh "docker network create my-network"
             sh "docker run -d --rm --network my-network --name calcForStaging dminus251/calculator:latest"
-	    sh "docker logs calcForStaging"
 	    //sh "docker run -d --rm -p 8765:8081 --name calcForStaging dminus251/calculator:latest"
 	  }
 	}
@@ -61,6 +60,7 @@ pipeline {
 	  steps{
 	    sh "cat acceptance_test.sh"
 	    sleep 60 //docker run이 확실히 실행될 때까지 기다림
+	    sh "docker logs calcForStaging"
 	    sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
 	  }  
 	}
